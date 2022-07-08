@@ -32,7 +32,7 @@ const usersController = {
                 res.status(500).json(err);
             });
     },
-    
+
      // Get single user by ID
      getUsersById({params}, res) {
         Users.findOne({_id: params.id })
@@ -59,3 +59,15 @@ const usersController = {
             })
     },
 
+    // Update a current User by ID
+    updateUsers({params, body}, res) {
+        Users.findOneAndUpdate({_id: params.id}, body, {new: true, runValidators: true})
+            .then(dbUsersData => {
+                if(!dbUsersData) {
+                    res.status(404).json({message: 'No User with this particular ID!'});
+                    return;
+                }
+                res.json(dbUserData);
+            })
+            .catch(err => res.json(err))
+    },
