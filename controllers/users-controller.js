@@ -71,3 +71,18 @@ const usersController = {
             })
             .catch(err => res.json(err))
     },
+
+    // Delete a current user by id
+    deleteUsers({params}, res) {
+        Users.findOneAndDelete({_id: params.id})
+            .then(dbUsersData => {
+                if(!dbUsersData) {
+                    res.status(404).json({message: 'No User with this particular ID!'});
+                    return;
+                }
+                res.json(dbUsersData);
+            })
+            .catch(err => res.status(400).json(err));
+    },
+
+    
