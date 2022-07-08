@@ -66,3 +66,6 @@ const ThoughtsSchema = new Schema(
 ThoughtsSchema.virtual("reactionCount").get(function () {
   return this.reactions.length;
 });
+
+// create the Thoughts model using the Thoughts Schema
+const Thoughts = model("Thoughts", ThoughtsSchema);
