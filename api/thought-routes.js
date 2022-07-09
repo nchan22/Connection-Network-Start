@@ -12,3 +12,8 @@ const {
     deleteReaction
 
 } = require('../controllers/thoughts-controller');
+
+// -- Directs to: /api/thoughts <GET>
+router
+    .route('/')
+    .get(getAllThoughts);
