@@ -17,3 +17,10 @@ const {
 router
     .route('/')
     .get(getAllThoughts);
+
+// -- Directs to: /api/thoughts/:id <GET, PUT, DELETE>
+router
+    .route('/:id')
+    .get(getThoughtsById)
+    .put(updateThoughts)
+    .delete(deleteThoughts);
