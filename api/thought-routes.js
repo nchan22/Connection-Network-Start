@@ -24,3 +24,8 @@ router
     .get(getThoughtsById)
     .put(updateThoughts)
     .delete(deleteThoughts);
+
+// -- Directs to: /api/thoughts/:userId <POST>
+router
+    .route('/:userId')
+    .post(createThoughts);
